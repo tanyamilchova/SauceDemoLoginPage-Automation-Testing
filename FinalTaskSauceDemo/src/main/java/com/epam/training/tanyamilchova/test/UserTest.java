@@ -16,9 +16,8 @@ public class UserTest extends CommonConditions{
         User userEmptyCredentials= UserCreator.withEmptyCredential();
         String actualMessage=new LoginPage(driver)
                 .openPage()
-                .clearInput()
-                .login(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
-                .pressLoginButton()
+                .putCredentials(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
+                .login()
                 .errorMessage();
 
         String expected="Epic sadface: Username is required";
@@ -29,10 +28,9 @@ public class UserTest extends CommonConditions{
         User userEmptyCredentials= UserCreator.withRandomCredentials();
         String actualMessage=new LoginPage(driver)
                 .openPage()
-                .clearInput()
-                .login(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
+                .putCredentials(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
                 .clearPassword()
-                .pressLoginButton()
+                .login()
                 .errorMessage();
 
         String expected="Epic sadface: Password is required";
@@ -43,9 +41,8 @@ public class UserTest extends CommonConditions{
         User userEmptyCredentials= UserCreator.withRandomCredentials();
         String actualMessage=new LoginPage(driver)
                 .openPage()
-                .clearInput()
-                .login(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
-                .pressLoginButton()
+                .putCredentials(userEmptyCredentials.getUserName(),userEmptyCredentials.getPassword())
+                .login()
                 .getDashBoardTitle();
 
         String expected="Swag Labs";

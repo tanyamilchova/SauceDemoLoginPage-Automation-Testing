@@ -15,8 +15,6 @@ public class LoginPage extends AbstractPage{
     @FindBy(xpath = "//input[@id='password']")
     protected WebElement inputPassword;
     @FindBy(xpath = "//input[@id='login-button']")
-    protected WebElement pressLoginButton;
-    @FindBy(xpath = "//input[@type='submit'][@class='submit-button btn_action'][@data-test='login-button'][@id='login-button'][@name='login-button'][@value='Login']")
     protected WebElement loginButton;
     @FindBy(xpath = "//button[contains(@class, 'error-button')]/parent::h3")
     protected WebElement errorMessage;
@@ -33,19 +31,15 @@ public class LoginPage extends AbstractPage{
         logger.info("Login page opened");
         return this;
     }
-
-    public LoginPage clearInput(){
+    public LoginPage putCredentials(String username, String password){
         inputUserName.clear();
-        inputPassword.clear();
-        return this;
-    }
-    public LoginPage login(String username, String password){
         inputUserName.sendKeys(username);
+        inputPassword.clear();
         inputPassword.sendKeys(password);
         logger.info("Login performed");
         return this;
     }
-    public LoginPage pressLoginButton(){
+    public LoginPage login(){
         loginButton.click();
         return this;
     }

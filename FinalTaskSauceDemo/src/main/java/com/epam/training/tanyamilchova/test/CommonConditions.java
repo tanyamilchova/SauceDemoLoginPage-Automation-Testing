@@ -1,17 +1,17 @@
 package com.epam.training.tanyamilchova.test;
 
 import com.epam.training.tanyamilchova.driver.DriverSingleton;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.training.tanyamilchova.util.TestListener;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Listeners;
 
-
+@Listeners({TestListener.class})
 public class CommonConditions {
 
     protected WebDriver driver;
-    protected WebDriverManager manager;
-    private static final String RESAURCES_PATH="src/main/resources/";
+
     @Before
     public void setup() {
         driver=DriverSingleton.getDriver();
